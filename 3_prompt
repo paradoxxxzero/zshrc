@@ -2,89 +2,55 @@
 # 3 Prompt #
 ############
 
-local Noir="%{[0;30m%}"
-local Rouge="%{[0;31m%}"
-local Vert="%{[0;32m%}"
-local Marron="%{[0;33m%}"
-local Bleu="%{[0;34m%}"
-local Violet="%{[0;35m%}"
-local Cyan="%{[0;36m%}"
-local GrisClair="%{[0;37m%}"
-local Gris="%{[1;30m%}"
-local Rose="%{[1;31m%}"
-local VertClair="%{[1;32m%}"
-local MarronClair="%{[1;33m%}"
-local BleuClair="%{[1;34m%}"
-local VioletClair="%{[1;35m%}"
-local CyanClair="%{[1;36m%}"
-local Blanc="%{[1;37m%}"
+autoload -U colors
+colors
 
-local BarColor="${Blanc}"
+local bar="${fg_bold[white]}"
 
-# Si on est root
+# Are we root ?
 if [ "`id -u`" -eq 0 ]; 
 then
-    local BarColor="${Rose}"
+    bar="${fg_bold[red]}"
 else
     case $HOST in
 	archwork) 
-	    BarColor="${VioletClair}" 
+	    bar="${fg_bold[magenta]}" 
 	    ;;
 	archleeenux)
-	    BarColor="${Cyan}"
+	    bar="${fg_bold[cyan]}"
 	    ;;
 	ark)
-	    BarColor="${VertClair}"
-	    ;;
-	intpc38)
-	    BarColor="${Vert}"
+	    bar="${fg_bold[green]}"
 	    ;;
     esac
 fi
 
-local Top="${BarColor}┌─"
-local Bottom="${BarColor}└> "
-local Temps="${Blanc}[${GrisClair}%*${Blanc}]"
-local Utilisateur="${BleuClair}%n"
-local Arobase="${GrisClair}@"
-local Machine="${BleuClair}%m"
-local TermName="${BarColor}/${BleuClair}$TERM"
-local DeuxPoints="${Violet}:"
-local Repertoire='${BarColor}${${(%):-%~}//\//${BarColor}/${Rose}}'
-local PromptDollar="${Blanc} %# "
-local Smiley="%(?,${BleuClair}^^,${MarronClair}-_-')"
-local Sep="${BarColor}─"
-local Retour="${Blanc}|${GrisClair}%?${Blanc}|"
-local NoH="${Blanc}(${GrisClair}%h${Blanc})"
+local top="${bar}┌─"
+local bottom="${bar}└> "
+local time="${fg_no_bold[white]}[${bar}%*${fg_no_bold[white]}]"
+local user="${fg_bold[blue]}%n"
+local at="${fg_no_bold[white]}@"
+local host="${fg_bold[blue]}%m"
+local term="${bar}/${fg_bold[blue]}$TERM"
+local colon="${fg_no_bold[magenta]}:"
+local dir="${bar}${${(%):-%~}//\//${bar}/${fg_bold[magenta]}}"
+local dollar="${fg_no_bold[white]} %# "
+local ret="${fg_no_bold[white]}|${fg_no_bold[magenta]}%?${fg_no_bold[white]}|"
+local stat="%(?,${fg_bold[blue]}^^,${fg_bold[yellow]}-_-')"
+local sep="${bar}─"
+local num="${fg_no_bold[white]}(${bar}%h${fg_no_bold[white]})"
 
 local prmpt="
-${Top}${Temps}${Sep}${NoH}${Sep}${Utilisateur}${Arobase}${Machine}${TermName}${DeuxPoints}${Repertoire}
-${Bottom}${Smiley}${PromptDollar}${GrisClair}"
-local prmpt2="${Bottom}${BleuClair}%_ ${Blanc}> ${GrisClair}"
+${top}${time}${sep}${ret}${sep}${num}${sep}${user}${at}${host}${term}${colon}${dir}
+${bottom}${stat}${dollar}${fg_no_bold[white]}"
+local prmpt2="${bottom}${fg_bold[blue]}%_ ${fg_bold[white]}> ${fg_no_bold[white]}"
 
 export PS1="${prmpt}"
 export PS2="${prmpt2}"
 
-
-
-
-# Titre de la fenêtre d'un xterm
+# xterm title
 case $TERM in
     xterm*)
-         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-	 ;;
+		precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+		;;
 esac
-
-# Gestion de la couleur pour 'ls' (exportation de LS_COLORS)
-if [ -x /usr/bin/dircolors ]
-then
-    if [ -r ~/.dir_colors ]
-    then
-	eval "`dircolors ~/.dir_colors`"
-    elif [ -r /etc/dir_colors ]
-    then
-	eval "`dircolors /etc/dir_colors`"
-    else
-	eval "`dircolors`"
-    fi
-fi
