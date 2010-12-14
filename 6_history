@@ -1,0 +1,37 @@
+#############
+# 6 History #
+#############
+
+# Nombre d'entrées dans l'historique
+export HISTORY=50000
+export SAVEHIST=50000
+
+# Fichier où est stocké l'historique
+export HISTFILE=$HOME/.history
+
+# Ajoute l'historique à la fin de l'ancien fichier
+setopt append_history
+
+# Chaque ligne est ajoutée dans l'historique à mesure qu'elle est tapée
+setopt inc_append_history
+
+# Ne stocke pas  une ligne dans l'historique si elle  est identique à la
+# précédente
+setopt hist_ignore_dups
+
+# Supprime les  répétitions dans le fichier  d'historique, ne conservant
+# que la dernière occurrence ajoutée
+#setopt hist_ignore_all_dups
+
+# Supprime les  répétitions dans l'historique lorsqu'il  est plein, mais
+# pas avant
+setopt hist_expire_dups_first
+
+# N'enregistre  pas plus d'une fois  une même ligne, quelles  que soient
+# les options fixées pour la session courante
+#setopt hist_save_no_dups
+
+# La recherche dans  l'historique avec l'éditeur de commandes  de zsh ne
+# montre  pas  une même  ligne  plus  d'une fois,  même  si  elle a  été
+# enregistrée
+setopt hist_find_no_dups

@@ -1,0 +1,41 @@
+#############
+# 2 Aliases #
+#############
+
+alias ls='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable'
+
+alias grep='grep --color=auto'
+alias svn='colorsvn'
+alias cp='cp --interactive'
+alias mv='mv --interactive'
+alias rm='rm --interactive'
+
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+
+alias c='clear'
+alias less='less --quiet'
+alias s='cd ..'
+
+alias df='df --human-readable'
+alias du='du --human-readable'
+alias duh="du --all --max-depth=1|sort -n"
+alias duk="du --max-depth=1 -k | sort -n | cut -f2 | xargs -d '\n' du -sh 2>/dev/null"
+alias md='mkdir'
+alias rd='rmdir'
+
+alias §='sudo'
+alias §§='sudo -s'
+
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+alias -g .......='../../../../../..'
+alias -g ........='../../../../../../..'
+alias -g .........='../../../../../../../..'
+
+alias x='emacs'
+alias xx='sudo emacs'

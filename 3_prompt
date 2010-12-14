@@ -1,0 +1,90 @@
+############
+# 3 Prompt #
+############
+
+local Noir="%{[0;30m%}"
+local Rouge="%{[0;31m%}"
+local Vert="%{[0;32m%}"
+local Marron="%{[0;33m%}"
+local Bleu="%{[0;34m%}"
+local Violet="%{[0;35m%}"
+local Cyan="%{[0;36m%}"
+local GrisClair="%{[0;37m%}"
+local Gris="%{[1;30m%}"
+local Rose="%{[1;31m%}"
+local VertClair="%{[1;32m%}"
+local MarronClair="%{[1;33m%}"
+local BleuClair="%{[1;34m%}"
+local VioletClair="%{[1;35m%}"
+local CyanClair="%{[1;36m%}"
+local Blanc="%{[1;37m%}"
+
+local BarColor="${Blanc}"
+
+# Si on est root
+if [ "`id -u`" -eq 0 ]; 
+then
+    local BarColor="${Rose}"
+else
+    case $HOST in
+	archwork) 
+	    BarColor="${VioletClair}" 
+	    ;;
+	archleeenux)
+	    BarColor="${Cyan}"
+	    ;;
+	ark)
+	    BarColor="${VertClair}"
+	    ;;
+	intpc38)
+	    BarColor="${Vert}"
+	    ;;
+    esac
+fi
+
+local Top="${BarColor}┌─"
+local Bottom="${BarColor}└> "
+local Temps="${Blanc}[${GrisClair}%*${Blanc}]"
+local Utilisateur="${BleuClair}%n"
+local Arobase="${GrisClair}@"
+local Machine="${BleuClair}%m"
+local TermName="${BarColor}/${BleuClair}$TERM"
+local DeuxPoints="${Violet}:"
+local Repertoire='${BarColor}${${(%):-%~}//\//${BarColor}/${Rose}}'
+local PromptDollar="${Blanc} %# "
+local Smiley="%(?,${BleuClair}^^,${MarronClair}-_-')"
+local Sep="${BarColor}─"
+local Retour="${Blanc}|${GrisClair}%?${Blanc}|"
+local NoH="${Blanc}(${GrisClair}%h${Blanc})"
+
+local prmpt="
+${Top}${Temps}${Sep}${NoH}${Sep}${Utilisateur}${Arobase}${Machine}${TermName}${DeuxPoints}${Repertoire}
+${Bottom}${Smiley}${PromptDollar}${GrisClair}"
+local prmpt2="${Bottom}${BleuClair}%_ ${Blanc}> ${GrisClair}"
+
+export PS1="${prmpt}"
+export PS2="${prmpt2}"
+
+
+
+
+# Titre de la fenêtre d'un xterm
+case $TERM in
+    xterm*)
+         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+	 ;;
+esac
+
+# Gestion de la couleur pour 'ls' (exportation de LS_COLORS)
+if [ -x /usr/bin/dircolors ]
+then
+    if [ -r ~/.dir_colors ]
+    then
+	eval "`dircolors ~/.dir_colors`"
+    elif [ -r /etc/dir_colors ]
+    then
+	eval "`dircolors /etc/dir_colors`"
+    else
+	eval "`dircolors`"
+    fi
+fi
