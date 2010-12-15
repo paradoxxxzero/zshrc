@@ -12,7 +12,7 @@ PACKAGES=`pacman -Q | wc -l`
 SHELLNAME=`echo $SHELL | cut -d '/' -f 3`
 USEDMEM=`free -m | grep Mem | sed -r "s/Mem:\s+([0-9]+)\s+([0-9]+).*/${red__}\2M${blue__} \/ \1M/"`
 USEDSWAP=`free -m | grep Swap | sed -r "s/Swap:\s+([0-9]+)\s+([0-9]+).*/${green__}\2M${blue__} \/ \1M/"`
-FREEDISK=`df -Tlh -x tmpfs -x devtmpfs --total | grep total | sed -r "s/total\s+\-\s+([0-9]+\w)\s+([0-9]+\w).*/${yellow__}\2 ${blue__}\/ \1/"`
+FREEDISK=`df -Tlh -x tmpfs -x devtmpfs --total | grep total | sed -r "s/total\s+\-\s+([0-9.]+\w)\s+([0-9.]+\w).*/${yellow__}\2 ${blue__}\/ \1/"`
 #clear
 
 echo -e "                           ${cyan__}\`"
