@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 unset __CURRENT_GIT_BRANCH
 unset __CURRENT_GIT_BRANCH_STATUS
 unset __CURRENT_GIT_BRANCH_IS_DIRTY

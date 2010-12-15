@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 HOSTNAME=`uname -n`
 KERNEL=`uname -r`
 CPU=`uname -p`

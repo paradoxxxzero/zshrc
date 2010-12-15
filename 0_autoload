@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 autoload -U colors
 autoload -U compinit
 fpath=(~/.zsh.d/functions $fpath)

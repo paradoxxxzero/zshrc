@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 if [ -n "$__CURRENT_GIT_BRANCH" ]; then
 	local s="<${__yellow}$__CURRENT_GIT_BRANCH"
 	case "$__CURRENT_GIT_BRANCH_STATUS" in
