@@ -14,6 +14,6 @@ typeset -ga precmd_functions
 typeset -ga chpwd_functions
 preexec_functions+='preexec_update_vc_vars'
 precmd_functions+='precmd_update_vc_vars'
-chpwd_functions+='chpwd_update_vc_vars'
+chpwd_functions+='update_current_vc_vars'
 
 update_current_vc_vars
