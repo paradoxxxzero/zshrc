@@ -6,7 +6,6 @@
 
 unsetopt clobber
 unsetopt ignore_eof
-setopt print_exit_value
 unsetopt rm_star_silent
 setopt correct
 setopt nullglob

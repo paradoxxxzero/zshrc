@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [ -n "$__EXECUTED_GIT_COMMAND" ]; then
+if [ -n "$__EXECUTED_VC_COMMAND" ]; then
 	update_current_vc_vars
-	unset __EXECUTED_GIT_COMMAND
+	unset __EXECUTED_VC_COMMAND
 fi

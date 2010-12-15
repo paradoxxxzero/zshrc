@@ -1,7 +1,7 @@
 #!/bin/zsh
-
+local s=""
 if [ -n "$__CURRENT_GIT_BRANCH" ]; then
-    local s="<${__yellow}$__CURRENT_GIT_BRANCH"
+    s+="${sep}${__white}<${__green}git:${__yellow}$__CURRENT_GIT_BRANCH"
     case "$__CURRENT_GIT_BRANCH_STATUS" in
 	ahead)
 	    s+="${__green}"
@@ -35,5 +35,13 @@ if [ -n "$__CURRENT_GIT_BRANCH" ]; then
 	s+="${__red}⚡"
     fi
     s+="${__white}>"
-    printf "%s" $s
 fi
+
+if [ -n "$__CURRENT_SVN_REV" ]; then
+    s+="${sep}${__white}<${__green}svn:${__yellow}$__CURRENT_SVN_REV"
+    if [ -n "$__CURRENT_SVN_BRANCH_IS_DIRTY" ]; then
+	s+="${__red}⚡"
+    fi
+    s+="${__white}>"
+fi
+printf "%s" $s

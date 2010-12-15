@@ -2,6 +2,9 @@
 
 case "$1" in 
 	git*)
-	__EXECUTED_GIT_COMMAND=1
+	__EXECUTED_VC_COMMAND=1
+	;;
+	svn*)
+	__EXECUTED_VC_COMMAND=1
 	;;
 esac

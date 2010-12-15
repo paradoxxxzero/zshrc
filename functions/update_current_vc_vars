@@ -6,10 +6,12 @@ unset __CURRENT_GIT_BRANCH_UP
 unset __CURRENT_GIT_BRANCH_DOWN
 unset __CURRENT_GIT_BRANCH_IS_DIRTY
 
-local st="$(git status 2>/dev/null)"
-if [[ -n "$st" ]]; then
+unset __CURRENT_SVN_REV
+
+local gitst="$(git status 2>/dev/null)"
+if [[ -n "$gitst" ]]; then
     local -a arr
-    arr=(${(f)st})
+    arr=(${(f)gitst})
 
     if [[ $arr[1] =~ 'Not currently on any branch.' ]]; then
 	__CURRENT_GIT_BRANCH='no-branch'
@@ -31,7 +33,19 @@ if [[ -n "$st" ]]; then
 	fi
     fi
 
-    if [[ ! $st =~ 'nothing to commit' ]]; then
+    if [[ ! $gitst =~ 'nothing to commit' ]]; then
 	__CURRENT_GIT_BRANCH_IS_DIRTY='1'
     fi
 fi
+
+local svninfo="$(svn info 2>/dev/null)"
+if [[ -n "$svninfo" ]]; then
+    local -a arr
+    arr=(${(f)svninfo})
+    __CURRENT_SVN_REV=${arr[5][(w)2]}
+    local svnstatus="$(svn status 2>/dev/null)"
+    if [[ -n "$svnstatus" ]]; then
+	__CURRENT_SVN_BRANCH_IS_DIRTY='1'	
+    fi
+fi
+
