@@ -1,21 +1,39 @@
 #!/bin/zsh
 
 if [ -n "$__CURRENT_GIT_BRANCH" ]; then
-	local s="<${__yellow}$__CURRENT_GIT_BRANCH"
-	case "$__CURRENT_GIT_BRANCH_STATUS" in
-		ahead)
-		s+="${__green}↑"
-		;;
-		diverged)
-		s+="${__blue}↕"
-		;;
-		behind)
-		s+="${__magenta}↓"
-		;;
-	esac
-	if [ -n "$__CURRENT_GIT_BRANCH_IS_DIRTY" ]; then
-		s+="${__red}⚡"
-	fi
-	s+="${__white}>"
-	printf "%s" $s
+    local s="<${__yellow}$__CURRENT_GIT_BRANCH"
+    case "$__CURRENT_GIT_BRANCH_STATUS" in
+	ahead)
+	    s+="${__green}"
+	    for i in {1..$__CURRENT_GIT_BRANCH_UP}
+	    do
+		s+="↑"
+	    done
+	    ;;
+	diverged)
+	    s+="${__blue}↕"
+	    s+="${__green}"
+	    for i in {1..$__CURRENT_GIT_BRANCH_UP}
+	    do
+		s+="↑"
+	    done
+	    s+="${__magenta}"
+	    for i in {1..$__CURRENT_GIT_BRANCH_DOWN}
+	    do
+		s+="↓"
+	    done
+	    ;;
+	behind)
+	    s+="${__magenta}"
+	    for i in {1..$__CURRENT_GIT_BRANCH_DOWN}
+	    do
+		s+="↓"
+	    done
+	    ;;
+    esac
+    if [ -n "$__CURRENT_GIT_BRANCH_IS_DIRTY" ]; then
+	s+="${__red}⚡"
+    fi
+    s+="${__white}>"
+    printf "%s" $s
 fi
