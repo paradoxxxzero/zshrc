@@ -2,51 +2,75 @@
 # 3 Prompt #
 ############
 
-autoload -U colors
-colors
+# Create var shorcuts for colors
+___="%{${reset_color}%}"
+____="${reset_color}"
+for c in red green yellow white black cyan magenta blue; do
+    # escaped with %{ %} for use in prompt
+    eval _${c}='%{$fg_no_bold[${(L)c}]%}'
+    eval __${c}='%{$fg_bold[${(L)c}]%}'
+    # not escaped for use anywhere else
+    eval ${c}_='$fg_no_bold[${(L)c}]'
+    eval ${c}__='$fg_bold[${(L)c}]'
+done
 
-local bar="${fg_bold[white]}"
+local bar="${__white}"
 
 # Are we root ?
 if [ "`id -u`" -eq 0 ]; 
 then
-    bar="${fg_bold[red]}"
+    bar="${__red}"
 else
     case $HOST in
 	archwork) 
-	    bar="${fg_bold[magenta]}" 
+	    bar="${__magenta}"
 	    ;;
 	archleeenux)
-	    bar="${fg_bold[cyan]}"
+	    bar="${__cyan}"
 	    ;;
 	ark)
-	    bar="${fg_bold[green]}"
+	    bar="${__green}"
 	    ;;
     esac
 fi
 
 local top="${bar}┌─"
-local bottom="${bar}└> "
+local bottom="${bar}└"
+# if we are in a subshell add a '-' for each sub level to the bottom
+if [ $SHLVL -gt 1 ];
+then
+    for i in {2..$SHLVL}
+    do
+	bottom="${bottom}─"
+    done
+fi
+bottom="${bottom}> "
 local sep="${bar}─"
-local time="${fg_bold[white]}[${bar}%*${fg_bold[white]}]"
-local user="${fg_bold[blue]}%n"
-local at="${fg_bold[white]}@"
-local host="${fg_bold[blue]}%m"
-local term="${bar}/${fg_bold[blue]}$TERM"
-local colon="${fg_no_bold[magenta]}:"
-local dir="${bar}${${(%):-%~}//\//${bar}/${fg_bold[magenta]}}"
-local dollar="${fg_bold[white]} %# "
-local ret="${fg_bold[white]}|${fg_no_bold[magenta]}%?${fg_bold[white]}|"
-local stat="%(?,${fg_bold[blue]}^^,${fg_bold[yellow]}-_-')"
-local num="${fg_bold[white]}(${bar}%h${fg_bold[white]})"
+local time="${__white}[${bar}%*${__white}]"
+local user="${__blue}%n"
+local at="${__white}@"
+local host="${__blue}%m"
+local term="${bar}/${__blue}$TERM"
+local colon="${_magenta}:"
+local dollar="${__white} %#"
+local ret="${__white}|${_magenta}%?${__white}|"
+local stat="%(?,${__blue}^^,${__yellow}-_-')"
+local num="${__white}(${bar}%h${__white})"
+
+# single quotes are important there :
+local dir='${bar}${${(%):-%~}//\//${__white}/${__red}}'
+local gitinfo='$(prompt_git_info)'
 
 local prmpt="
-${top}${time}${sep}${ret}${sep}${num}${sep}${user}${at}${host}${term}${colon}${dir}
-${bottom}${stat}${dollar}${fg_no_bold[white]}"
-local prmpt2="${bottom}${fg_bold[blue]}%_ ${fg_bold[white]}> ${fg_no_bold[white]}"
+${top}${time}${sep}─${user}${at}${host}${term}${colon}${dir}${__white}/
+${bottom}${stat}${dollar}${___} "
+local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
+
+local rprmpt="${bar}<─${__white}${gitinfo}${sep}${ret}${sep}${num}${___}"
 
 export PS1="${prmpt}"
 export PS2="${prmpt2}"
+export RPS1="${rprmpt}"
 
 # xterm title
 case $TERM in

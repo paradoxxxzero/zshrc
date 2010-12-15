@@ -1,0 +1,41 @@
+HOSTNAME=`uname -n`
+KERNEL=`uname -r`
+CPU=`uname -p`
+ARCH=`uname -m`
+UPTIME=$(</proc/uptime)
+UPTIME=${UPTIME%%.*}
+
+UPTIME="$(( UPTIME/60/60/24 )) days, $(( UPTIME/60/60%24 )) hours, $(( UPTIME/60%60 )) minutes, $(( UPTIME%60 )) seconds"
+PACKAGES=`pacman -Q | wc -l`
+SHELLNAME=`echo $SHELL | cut -d '/' -f 3`
+USEDMEM=`free -m | grep Mem | sed -r "s/Mem:\s+([0-9]+)\s+([0-9]+).*/${red__}\2M${blue__} \/ \1M/"`
+USEDSWAP=`free -m | grep Swap | sed -r "s/Swap:\s+([0-9]+)\s+([0-9]+).*/${green__}\2M${blue__} \/ \1M/"`
+FREEDISK=`df -Tlh -x tmpfs -x devtmpfs --total | grep total | sed -r "s/total\s+\-\s+([0-9]+\w)\s+([0-9]+\w).*/${yellow__}\2 ${blue__}\/ \1/"`
+#clear
+
+echo -e "                           ${cyan__}\`"
+echo -e "                          ${cyan__}-:"
+echo -e "                         ${cyan__}.//:"
+echo -e "                        ${cyan__}\`////-"
+echo -e "                       ${cyan__}\`://///."
+echo -e "                       ${cyan__}:///////."
+echo -e "                      ${cyan__}-/////////."
+echo -e "                     ${cyan__}\`://////////\`"
+echo -e "                    ${cyan__}-:..://///////\`"
+echo -e "                   ${cyan__}-////:::////////\`"
+echo -e "                  ${cyan__}-/////////////////\`     ${blue_}//=========================---${____}"
+echo -e "                 ${cyan__}-//////////++++/////\`     ${blue_}\\ ${cyan_}User:${blue__}     $USER${____}"
+echo -e "                ${cyan__}-////${cyan_}++++oooooooooo+++.     ${blue_}\\ ${cyan_}Hostname:${blue__} $HOSTNAME${____}"
+echo -e "               ${cyan_}-/+++oooooooooooooooooo+.     ${blue_}\\ ${cyan_}Os:${blue__}       Arch Linux $ARCH${____}"     
+echo -e "              ${cyan_}:+oooooooo+-..-/+oooooooo+.     ${blue_}\\ ${cyan_}Kernel:${blue__}   $KERNEL${____}"     
+echo -e "            ${cyan_}\`/ooooooooo:\`     .+oooooooo+.     ${blue_}\\ ${cyan_}Uptime:${blue__}   $UPTIME${____}"
+echo -e "           ${cyan_}\`/ooooooooo/        .ooooooooo+-     ${blue_}\\ ${cyan_}Shell:${blue__}    $SHELLNAME${____}"
+echo -e "          ${cyan_}\`/oooooooooo\`         /oooooo++++-     ${blue_}\\ ${cyan_}Terminal:${blue__} $TERM${____}"
+echo -e "         ${cyan_}\`+ooooooooooo\`         :oooooo++/-:.     ${blue_}\\ ${cyan_}Packages:${blue__} $PACKAGES${____}"
+echo -e "        ${cyan_}.+ooooooooooo+\`         :+oooooooo+/-\`     ${blue_}\\ ${cyan_}Cpu:${blue__}      $CPU${____}"
+echo -e "       ${cyan_}.+oooooo++/:-.\`          \`..-:/++ooooo+:     ${blue_}\\ ${cyan_}Mem:${blue__}      $USEDMEM${____}"
+echo -e "      ${cyan_}.+oo++/-.\`                      \`.-:++ooo:     ${blue_}\\ ${cyan_}Swap:${blue__}     $USEDSWAP${____}"
+echo -e "     ${cyan_}-++/-.\`                               \`-:++/\`    ${blue_}\\ ${cyan_}Disk:${blue__}     $FREEDISK${____}"
+echo -e "     ${cyan_}-++/-.\`                               \`-:++/\`     ${blue_}\\=========================---${____}"
+echo -e "    ${cyan_}.:.\`                                       .--      ${cyan__}"
+
