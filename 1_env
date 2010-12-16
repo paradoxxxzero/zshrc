@@ -5,7 +5,8 @@
 ###################
 
 export GWT_EXTERNAL_BROWSER=/usr/bin/firefox
-export PATH=$PATH:/opt/java/jre/bin
+export PATH=$PATH:/opt/java/jre/bin:~/.node/bin/
+
 export EDITOR=emacs
 export BROWSER=chromium-browser
 export GPGKEY=1193ADBC
