@@ -8,7 +8,7 @@ zstyle ':completion:*' cache-path ~/.zshcache
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 zstyle ':completion:*:functions' ignored-patterns '_*'
-zstyle ':completion:*' squeeze-slashes true
+
 zstyle ':completion:*:*:*:default' menu yes select
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
@@ -29,20 +29,22 @@ zstyle ':completion:*:default' list-prompt "${__cyan}└> %S%M matches%s ${_cyan
 zstyle ':completion:*:processes-names' command 'ps axho command' 
 
 zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}')
+
 zstyle ':completion:*:*:*:users' ignored-patterns \
-        adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
-        named news nfsnobody nobody nscd ntp operator pcap postgres radvd \
-        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs avahi-autoipd\
-        avahi backup messagebus beagleindex debian-tor dhcp dnsmasq fetchmail\
-        firebird gnats haldaemon hplip irc klog list man cupsys postfix\
-        proxy syslog www-data mldonkey sys snort
+         adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
+         named news nfsnobody nobody nscd ntp operator pcap postgres radvd \
+         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs avahi-autoipd\
+         avahi backup messagebus beagleindex debian-tor dhcp dnsmasq fetchmail\
+         firebird gnats haldaemon hplip irc klog list man cupsys postfix\
+         proxy syslog www-data mldonkey sys snort
 
 zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
 zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
 zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+
 zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:mv:*' ignore-line yes
 zstyle ':completion:*:cp:*' ignore-line yes
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+

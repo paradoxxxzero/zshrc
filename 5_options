@@ -4,22 +4,12 @@
 # 5 Options #
 #############
 
-unsetopt clobber
-unsetopt ignore_eof
-unsetopt rm_star_silent
-setopt correct
-setopt nullglob
-unsetopt list_ambiguous
-setopt auto_remove_slash
-setopt chase_links
-setopt hist_verify
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-#setopt pushd_silent
-setopt pushd_to_home
-unsetopt bg_nice
-unsetopt hup
-setopt promptsubst
-setopt extendedglob
-
+setopt correct            # Command correction
+setopt chase_links        # Follow symlinks
+setopt hist_verify        # Echo history command first
+setopt auto_cd            # No command ->  cd
+setopt auto_pushd         # Pushd on cd
+setopt pushd_ignore_dups  # Only pushd if not in stack
+setopt pushd_to_home      # Pushd -> pushd $HOME
+setopt prompt_subst       # Eval prompt
+setopt extended_glob      # Expand ~

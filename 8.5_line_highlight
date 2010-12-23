@@ -63,11 +63,22 @@ colorize-zle-buffer() {
 
 # Bind the function to ZLE events.
 # Lacks expand / complete hooks
-self-insert() { zle .self-insert && colorize-zle-buffer } ;                   zle -N self-insert
-delete-char() { zle .delete-char && colorize-zle-buffer } ;                   zle -N delete-char
-backward-delete-char() { zle .backward-delete-char && colorize-zle-buffer } ; zle -N backward-delete-char
-up-line-or-history() { zle .up-line-or-history && colorize-zle-buffer } ;     zle -N up-line-or-history
-down-line-or-history() { zle .down-line-or-history && colorize-zle-buffer } ; zle -N down-line-or-history
-beginning-of-history() { zle .beginning-of-history && colorize-zle-buffer } ; zle -N beginning-of-history
-end-of-history() { zle .end-of-history && colorize-zle-buffer } ;             zle -N end-of-history
-undo() { zle .undo && colorize-zle-buffer } ;                                 zle -N undo
+
+ZLE_COLORED_FUNCTIONS=(
+    self-insert 
+    delete-char
+    backward-delete-char
+    kill-word
+    backward-kill-word
+    up-line-or-history
+    down-line-or-history
+    beginning-of-history
+    end-of-history 
+    undo
+    redo
+    yank
+)
+
+for f in $ZLE_COLORED_FUNCTIONS; do
+    eval "$f() { zle .$f && colorize-zle-buffer } ; zle -N $f"
+done
