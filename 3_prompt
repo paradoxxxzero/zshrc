@@ -54,9 +54,9 @@ local at="${__white}@"
 local host="${__blue}%m"
 local term="${bar}/${__blue}$TERM"
 local colon="${_magenta}:"
-local dollar="${__white} %#"
+local dollar="${__white}%#"
 local ret="${__white}|${_magenta}%?${__white}|"
-local stat="%(?,${__blue}^^,${__yellow}-_-')"
+local stat="%(?,${__blue}^_^ ,${__yellow}-_-')"
 local num="${__white}(${bar}%h${__white})"
 
 # single quotes are important there :
@@ -65,10 +65,10 @@ local vcinfo='$(prompt_vc_info)'
 
 local prmpt="
 ${top}${time}${sep}─${user}${at}${host}${term}${colon}${dir}${__white}/
-${bottom}${stat}${dollar}${___} "
+${bottom}${dollar}${___} "
 local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
 
-local rprmpt="${bar}<─${__white}${vcinfo}${sep}${ret}${sep}${num}${___}"
+local rprmpt="${bar}<─${__white}${vcinfo}${sep}${ret}${sep}${num}${sep} ${stat}${___}"
 
 export PS1="${prmpt}"
 export PS2="${prmpt2}"

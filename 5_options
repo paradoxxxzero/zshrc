@@ -21,3 +21,5 @@ setopt pushd_to_home
 unsetopt bg_nice
 unsetopt hup
 setopt promptsubst
+setopt extendedglob
+
