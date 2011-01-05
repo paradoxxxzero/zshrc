@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+case "$1" in 
+	git*)
+	__EXECUTED_VC_COMMAND=1
+	;;
+	svn*)
+	__EXECUTED_VC_COMMAND=1
+	;;
+esac
