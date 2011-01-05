@@ -61,7 +61,7 @@ local num="${__white}(${bar}%h${__white})"
 
 # single quotes are important there :
 local dir='${bar}${${(%):-%~}//\//${__white}/${__red}}'
-local vcinfo='$(prompt_vc_info)'
+local vcinfo='$(X_prompt_vc_info)'
 
 local prmpt="
 ${top}${time}${sep}─${user}${at}${host}${term}${colon}${dir}${__white}/
