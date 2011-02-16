@@ -20,10 +20,10 @@ alias c='clear'
 alias less='less --quiet'
 alias s='cd ..'
 
+alias pk='packer --noedit'
 alias df='df --human-readable'
 alias du='du --human-readable'
-alias duh="du --all --max-depth=1|sort -n"
-alias duk="du --max-depth=1 -k | sort -n | cut -f2 | xargs -d '\n' du -sh 2>/dev/null"
+alias duh="du -h | sort -h"
 alias md='mkdir'
 alias rd='rmdir'
 
