@@ -21,11 +21,16 @@ alias less='less --quiet'
 alias s='cd ..'
 
 alias pk='packer --noedit'
+alias py='python2.7'
+alias pym='python2.7 -m'
+
 alias df='df --human-readable'
 alias du='du --human-readable'
 alias duh="du -h | sort -h"
 alias md='mkdir'
 alias rd='rmdir'
+
+alias resource='source ~/.zshrc'
 
 alias §='sudo'
 alias §§='sudo -s'
