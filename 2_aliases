@@ -30,6 +30,12 @@ alias duh="du -h | sort -h"
 alias md='mkdir'
 alias rd='rmdir'
 
+alias ga='git add'
+alias gt='git status'
+alias gc='git commit'
+alias gp='git pull'
+alias gh='git push'
+
 alias resource='source ~/.zshrc'
 
 alias §='sudo'
