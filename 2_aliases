@@ -44,5 +44,5 @@ alias -g .......='../../../../../..'
 alias -g ........='../../../../../../..'
 alias -g .........='../../../../../../../..'
 
-alias x='emacs'
+alias x='emacsclient -c -n'
 alias xx='sudo emacs'
