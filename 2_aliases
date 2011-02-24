@@ -35,6 +35,7 @@ alias gt='git status'
 alias gc='git commit'
 alias gp='git pull'
 alias gh='git push'
+alias gd='git diff'
 
 alias resource='source ~/.zshrc'
 
@@ -51,4 +52,5 @@ alias -g ........='../../../../../../..'
 alias -g .........='../../../../../../../..'
 
 alias x='emacsclient -c -n'
+alias y='emacsclient -n'
 alias xx='sudo emacs'
