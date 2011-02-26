@@ -4,16 +4,6 @@
 # 4 keybindings #
 #################
 
-backward-delete-to-slash () {
-  local WORDCHARS=${WORDCHARS//\//}
-  zle .backward-delete-word
-}
-zle -N backward-delete-to-slash
-
-bindkey "^[^?" backward-delete-to-slash
-bindkey "^H" backward-delete-word
-
-
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 bindkey "\e[5~" beginning-of-history

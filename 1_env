@@ -10,7 +10,7 @@ export PATH=$PATH:/opt/java/jre/bin:~/.node/bin/:/home/zero/bin:/opt/android-sdk
 export EDITOR="emacsclient -c"
 export BROWSER=chromium-browser
 export GPGKEY=1193ADBC
-
+export WORDCHARS="_-"
 # Host specific configuration 
 case $HOST in
     archwork) 
