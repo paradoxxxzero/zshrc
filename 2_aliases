@@ -37,6 +37,8 @@ alias gc='git commit'
 alias gp='git pull'
 alias gh='git push'
 alias gd='git diff'
+alias gk='git checkout'
+alias gm='git merge'
 
 alias resource='source ~/.zshrc'
 

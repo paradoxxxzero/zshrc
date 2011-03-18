@@ -19,7 +19,7 @@ if [[ -n "$gitst" ]]; then
 	__CURRENT_GIT_BRANCH="${arr[1][(w)4]}";
     fi
 
-    if [[ $arr[2] =~ 'Your branch is' ]]; then
+    if [[ $arr[2] =~ 'Your branch' ]]; then
 	if [[ $arr[2] =~ 'ahead' ]]; then
 	    __CURRENT_GIT_BRANCH_STATUS='ahead'
 	    __CURRENT_GIT_BRANCH_UP="${arr[2][(w)9]}"
@@ -29,7 +29,7 @@ if [[ -n "$gitst" ]]; then
 	    __CURRENT_GIT_BRANCH_DOWN="${arr[3][(w)6]}"
 	else
 	    __CURRENT_GIT_BRANCH_STATUS='behind'
-	    __CURRENT_GIT_BRANCH_DOWN="${arr[2][(w)9]}"
+	    __CURRENT_GIT_BRANCH_DOWN="${arr[2][(w)8]}"
 	fi
     fi
 
@@ -45,7 +45,7 @@ if [[ -n "$svninfo" ]]; then
     __CURRENT_SVN_REV=${arr[5][(w)2]}
     local svnstatus="$(svn status 2>/dev/null)"
     if [[ -n "$svnstatus" ]]; then
-	__CURRENT_SVN_BRANCH_IS_DIRTY='1'	
+	__CURRENT_SVN_BRANCH_IS_DIRTY='1'
     fi
 fi
 
