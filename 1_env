@@ -5,7 +5,7 @@
 ###################
 
 export GWT_EXTERNAL_BROWSER=/usr/bin/firefox
-export PATH=$PATH:/opt/java/jre/bin:~/.node/bin/:/home/zero/bin:/opt/android-sdk/platform-tools
+export PATH=$PATH:/usr/lib/perl5/vendor_perl/bin/:/opt/java/jre/bin:~/.node/bin/:/home/zero/bin:/opt/android-sdk/platform-tools
 
 export EDITOR="emacsclient -c"
 export BROWSER=chromium-browser
