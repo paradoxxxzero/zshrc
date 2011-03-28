@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-case "$1" in 
-	git*|ga*|gt*|gc*|gp*|gh*|gd*|gk|gm)
+case "$1" in
+	git*|ga*|gt*|gc*|gp*|gh*|gd*|gk*|gm*)
 	__EXECUTED_VC_COMMAND=1
 	;;
 	svn*)
