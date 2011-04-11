@@ -2,8 +2,8 @@
 
 autoload -U colors
 autoload -U compinit
-fpath=(~/.zsh.d $fpath)
-autoload -U ~/.zsh.d/X_*(:t)
+fpath=($ZSHRC_HOME/.zsh.d $fpath)
+autoload -U $ZSHRC_HOME/.zsh.d/X_*(:t)
 
 colors
 compinit
