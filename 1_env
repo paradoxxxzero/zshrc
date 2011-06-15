@@ -11,13 +11,14 @@ export EDITOR="emacsclient -c"
 export BROWSER=chromium-browser
 export GPGKEY=1193ADBC
 export WORDCHARS="_-"
-# Host specific configuration 
+export WORKON_HOME=~/.envs
+source /usr/bin/virtualenvwrapper.sh
+
+# Host specific configuration
 case $HOST in
-    archwork) 
+    archwork)
 	export http_proxy=http://10.20.68.3:8080
 	export https_proxy=http://10.20.68.3:8080
 	export ftp_proxy=http://10.20.68.3:8080
 	;;
 esac
-
-

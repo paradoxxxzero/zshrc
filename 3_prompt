@@ -19,12 +19,12 @@ done
 local bar="${__white}"
 
 # Are we root ?
-if [ "`id -u`" -eq 0 ]; 
+if [ "`id -u`" -eq 0 ];
 then
     bar="${__red}"
 else
     case $HOST in
-	archwork) 
+	arkozea)
 	    bar="${__magenta}"
 	    ;;
 	archleeenux)
@@ -33,11 +33,16 @@ else
 	ark)
 	    bar="${__green}"
 	    ;;
+	fanny|julia|cecile)
+	    bar="${__yellow}"
+	    ;;
     esac
 fi
 
+bar="%(?,${bar},${__yellow})"
+
 local top="${bar}┌─"
-local bottom="${bar}└"
+local bottom="${bar}└─"
 # if we are in a subshell add a '-' for each sub level to the bottom
 if [ $SHLVL -gt 1 ];
 then
@@ -46,7 +51,6 @@ then
 	bottom="${bottom}─"
     done
 fi
-bottom="${bottom}> "
 local sep="${bar}─"
 local time="${__white}[${bar}%*${__white}]"
 local user="${__blue}%n"
@@ -63,12 +67,23 @@ local num="${__white}(${bar}%h${__white})"
 local dir='${bar}${${(%):-%~}//\//${__white}/${__red}}'
 local vcinfo='$(X_prompt_vc_info)'
 
+function active_virtualenv() {
+    if [ -z "$VIRTUAL_ENV" ]; then
+        return
+    fi
+   echo "${__yellow}{ `basename \"$VIRTUAL_ENV\"` }${sep}"
+}
+
+local _env='$(active_virtualenv)'
+
+bottom="${bottom}${_env}≻  "
+
 local prmpt="
-${top}${time}${sep}─${user}${at}${host}${term}${colon}${dir}${__white}/
+${top}${time}${sep}─${user}${at}${host}${colon}${dir}${__white}/
 ${bottom}${dollar}${___} "
 local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
 
-local rprmpt="${bar}<─${__white}${vcinfo}${sep}${ret}${sep}${num}${sep} ${stat}${___}"
+local rprmpt="${bar}≺ ─${__white}${vcinfo}${sep}${ret}${sep}${num}${sep}${___}"
 
 export PS1="${prmpt}"
 export PS2="${prmpt2}"
