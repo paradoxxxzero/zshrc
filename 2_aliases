@@ -39,11 +39,17 @@ alias gh='git push'
 alias gd='git diff'
 alias gk='git checkout'
 alias gm='git merge'
+alias gl='git log'
+alias gcp='git cherry-pick'
 
 alias resource='source ~/.zshrc'
 
 alias §='sudo'
 alias §§='sudo -s'
+alias ç='sudo'
+alias Ç='sudo -s'
+alias çu='sudo -u'
+alias Çu='sudo -su'
 
 
 alias -g ...='../..'
