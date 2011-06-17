@@ -24,18 +24,18 @@ then
     bar="${__red}"
 else
     case $HOST in
-	arkozea)
-	    bar="${__magenta}"
-	    ;;
-	archleeenux)
-	    bar="${__cyan}"
-	    ;;
-	ark)
-	    bar="${__green}"
-	    ;;
-	fanny|julia|cecile)
-	    bar="${__yellow}"
-	    ;;
+    arkozea)
+        bar="${__magenta}"
+        ;;
+    archleeenux)
+        bar="${__cyan}"
+        ;;
+    ark)
+        bar="${__green}"
+        ;;
+    fanny|julia|cecile)
+        bar="${__yellow}"
+        ;;
     esac
 fi
 
@@ -48,7 +48,7 @@ if [ $SHLVL -gt 1 ];
 then
     for i in {2..$SHLVL}
     do
-	bottom="${bottom}─"
+    bottom="${bottom}─"
     done
 fi
 local sep="${bar}─"
@@ -65,7 +65,7 @@ local num="${__white}(${bar}%h${__white})"
 
 # single quotes are important there :
 local dir='${bar}${${(%):-%~}//\//${__white}/${__red}}'
-local vcinfo='$(X_prompt_vc_info)'
+local vcinfo='$(prompt_vc_info)'
 
 function active_virtualenv() {
     if [ -z "$VIRTUAL_ENV" ]; then
@@ -92,6 +92,6 @@ export RPS1="${rprmpt}"
 # xterm title
 case $TERM in
     xterm*)
-		precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-		;;
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
 esac

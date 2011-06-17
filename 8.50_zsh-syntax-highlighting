@@ -1,8 +1,12 @@
-#!/usr/bin/env zsh
-# Copyleft 2010 zsh-syntax-highlighting contributors
-# http://github.com/nicoulaj/zsh-syntax-highlighting
-# All wrongs reserved.
-# vim: ft=zsh sw=2 ts=2 et
+#!/bin/zsh
+
+####################
+# 8.5 Highlighting #
+####################
+
+source zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 ZSH_HIGHLIGHT_STYLES[default]='fg=white,bold'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
