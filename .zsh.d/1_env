@@ -11,6 +11,7 @@ export EDITOR="emacsclient -c"
 export BROWSER=chromium-browser
 export GPGKEY=1193ADBC
 export WORDCHARS="_-"
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
 export WORKON_HOME=~/.envs
 source /usr/bin/virtualenvwrapper.sh
 
