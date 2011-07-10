@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+case "$1" in
+    *pacman*|*packer*|*pacaur*|*yaourt*)
+    __NEED_REHASH=1
+    ;;
+esac
