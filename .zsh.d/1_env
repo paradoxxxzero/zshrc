@@ -24,3 +24,5 @@ case $HOST in
 	export ftp_proxy=http://10.20.68.3:8080
 	;;
 esac
+
+export PYTHONSTARTUP="$ZSHRC_HOME/.pythonrc.py"

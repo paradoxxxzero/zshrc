@@ -1,3 +1,4 @@
+
 #!/bin/zsh
 
 #################
@@ -24,6 +25,8 @@ bindkey "^[OH" beginning-of-line
 bindkey "^[OF" end-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
+bindkey "^[[3;3~" kill-word
+bindkey "^[[3;5~" kill-word
 bindkey " " magic-space
 
 case "$TERM" in
