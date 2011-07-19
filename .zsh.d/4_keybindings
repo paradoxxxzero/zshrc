@@ -28,6 +28,7 @@ bindkey "\eOF" end-of-line
 bindkey "^[[3;3~" kill-word
 bindkey "^[[3;5~" kill-word
 bindkey " " magic-space
+bindkey "^[r" history-incremental-search-forward
 
 case "$TERM" in
     *rxvt*)
