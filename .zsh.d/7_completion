@@ -4,8 +4,10 @@
 # 7 Completion #
 ################
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zshcache
-zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' cache-path .zshcache
+zstyle ':completion:*' remove-all-dups yes
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*::::' completer _expand _complete _history _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
@@ -20,11 +22,11 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle ':completion:*' use-compctl false
 
 
-zstyle ':completion:*:descriptions' format "${__green}└> %B%d%b ${_green}"
-zstyle ':completion:*:messages' format "${__blue}└> %d ${_blue}"
-zstyle ':completion:*:warnings' format "${__yellow}└> No matches for: %d ${_yellow}"
-zstyle ':completion:*:corrections' format "${__red}└> %B%d (errors: %e)%b ${_red}"
-zstyle ':completion:*:default' list-prompt "${__cyan}└> %S%M matches%s ${_cyan}"
+zstyle ':completion:*:descriptions' format "${bar}──≻${__green} %B%d%b ${_green}"
+zstyle ':completion:*:messages' format "${bar}──≻${__blue} %d ${_blue}"
+zstyle ':completion:*:warnings' format "${bar}──≻${__yellow} No matches for: %d ${_yellow}"
+zstyle ':completion:*:corrections' format "${bar}──≻${__red} %B%d (errors: %e)%b ${_red}"
+zstyle ':completion:*:default' list-prompt "${bar}──≻${__cyan} %S%M matches%s ${_cyan}"
 
 zstyle ':completion:*:processes-names' command 'ps axho command' 
 
@@ -47,4 +49,3 @@ zstyle '*' single-ignored show
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:mv:*' ignore-line yes
 zstyle ':completion:*:cp:*' ignore-line yes
-
