@@ -26,3 +26,6 @@ case $HOST in
 esac
 
 export PYTHONSTARTUP="$ZSHRC_HOME/.pythonrc.py"
+
+export LESS='--RAW-CONTROL-CHARS --tabs=8 -r --quiet'
+export LESSOPEN="|  pygmentize %s"

@@ -17,7 +17,6 @@ alias la='ls -a'
 alias lla='ls -la'
 
 alias c='clear'
-alias less='less --quiet'
 alias s='cd ..'
 
 alias pk='packer --noedit'
