@@ -92,6 +92,7 @@ export RPS1="${rprmpt}"
 # xterm title
 case $TERM in
     xterm*)
-        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        precmd () {print -Pn "\e]0;%~\a"}
+        preexec () { print -Pn "\e]0;$1\a" }
         ;;
 esac

@@ -3,6 +3,7 @@
 ################
 # 7 Completion #
 ################
+
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path .zshcache
 zstyle ':completion:*' remove-all-dups yes
@@ -10,6 +11,14 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*::::' completer _expand _complete _history _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 zstyle ':completion:*:functions' ignored-patterns '_*'
+
+
+zstyle ':completion:*' list-colors "=(#b) #(-#)*=36=31" "=(#b) #([a-z]#)*=35=32"
+# zstyle ':completion:*:*:task:*:default' list-colors "=(#b) #([^-]#)*=${__blue}=${__yellow}"
+# zstyle ':completion:*:*:task:*:values' list-colors "=(#b) #([^-]#)*=${__blue}=${__yellow};${__red}"
+# zstyle ':completion:*:*:task:*:commands' list-colors "=(#b) #([^-]#)*=${__blue}=${__yellow}"
+
+zstyle ':completion:*' group-name ''
 
 zstyle ':completion:*:*:*:default' menu auto select
 
@@ -19,7 +28,6 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -A -o pid,user,cm
 zstyle ':completion:*:expand:*' tag-order all-expansions
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-zstyle ':completion:*' use-compctl false
 
 
 zstyle ':completion:*:descriptions' format "${bar}──≻${__green} %B%d%b ${_green}"
