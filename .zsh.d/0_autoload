@@ -2,6 +2,9 @@
 
 autoload -U colors
 autoload -U compinit
+
+fpath=($ZSHRC_HOME/.zsh.d/zsh-completions $fpath)
+
 fpath=($ZSHRC_HOME/.zsh.d/vc_functions/ $fpath)
 autoload -U $ZSHRC_HOME/.zsh.d/vc_functions/*(:t)
 
