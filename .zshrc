@@ -14,12 +14,14 @@ then
     unfunction preexec
     PS1='$ '
 else
-    if [[ "$0" == "zsh" ]]
-    then
-        export ZSHRC_HOME=$HOME
-    else
-        export ZSHRC_HOME=`dirname $0`
-    fi
+    case "$0" in
+	*zsh*)
+	    export ZSHRC_HOME=$HOME
+        ;;
+	*)
+            export ZSHRC_HOME=`dirname $0 || $HOME`
+        ;;
+    esac
     setopt extendedglob
     for file in $ZSHRC_HOME/.zsh.d/*(.);
     do
