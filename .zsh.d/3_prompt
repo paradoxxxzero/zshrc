@@ -24,8 +24,8 @@ then
     bar="${__red}"
 else
     case $HOST in
-    arkozea)
-        bar="${__magenta}"
+    arkw)
+        bar="${__blue}"
         ;;
     archleeenux)
         bar="${__cyan}"

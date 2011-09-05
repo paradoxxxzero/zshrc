@@ -24,7 +24,7 @@ case $HOST in
 	export ftp_proxy=http://10.20.68.3:8080
 	;;
 esac
-
+export PYMACS_PYTHON=python2
 export PYTHONSTARTUP="$ZSHRC_HOME/.pythonrc.py"
 
 export LESS='--RAW-CONTROL-CHARS --tabs=8 -r --quiet'
