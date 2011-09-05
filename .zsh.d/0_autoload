@@ -12,7 +12,7 @@ fpath=($ZSHRC_HOME/.zsh.d/rehash_hooks/ $fpath)
 autoload -U $ZSHRC_HOME/.zsh.d/rehash_hooks/*(:t)
 
 colors
-compinit
+compinit -u
 
 # for version control status :
 typeset -ga preexec_functions
