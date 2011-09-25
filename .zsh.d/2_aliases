@@ -40,7 +40,7 @@ alias gk='git checkout'
 alias gm='git merge'
 alias gl='git log'
 alias gcp='git cherry-pick'
-
+alias gsu='git submodule foreach git submodule update --init'
 alias resource='source ~/.zshrc'
 
 alias §='sudo'
