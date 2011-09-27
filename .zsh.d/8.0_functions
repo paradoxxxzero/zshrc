@@ -4,11 +4,20 @@
 # 8 functions #
 ###############
 
+# Fuzzy find
+f() {
+    find . -name "*"$1"*" ${(@)argv[2,$#]}
+}
+# Strict find
+sf() {
+    find . -name $*
+}
+
 # Colorize stderr
 #exec 2>>(while read line; do
 #  print '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
 
-# Parse last commad content
+# Parse last command content
 autoload -U read-from-minibuffer
 zmodload -i zsh/parameter
 insert-last-command-output() {

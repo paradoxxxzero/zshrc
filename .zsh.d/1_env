@@ -14,15 +14,18 @@ export WORDCHARS="_-"
 if [ -x /usr/bin/virtualenvwrapper.sh ]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
     export WORKON_HOME=~/.envs
+    export PROJECT_HOME=~/kozea
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
     source /usr/bin/virtualenvwrapper.sh
 fi
 # Host specific configuration
 case $HOST in
     archwork)
-	export http_proxy=http://10.20.68.3:8080
-	export https_proxy=http://10.20.68.3:8080
-	export ftp_proxy=http://10.20.68.3:8080
-	;;
+        export http_proxy=http://10.20.68.3:8080
+        export https_proxy=http://10.20.68.3:8080
+        export ftp_proxy=http://10.20.68.3:8080
+    ;;
 esac
 export PYMACS_PYTHON=python2
 export PYTHONSTARTUP="$ZSHRC_HOME/.pythonrc.py"

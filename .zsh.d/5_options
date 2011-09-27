@@ -6,7 +6,6 @@
 
 setopt correct            # Command correction
 setopt chase_links        # Follow symlinks
-setopt hist_verify        # Echo history command first
 setopt auto_cd            # No command ->  cd
 setopt auto_pushd         # Pushd on cd
 setopt pushd_ignore_dups  # Only pushd if not in stack
