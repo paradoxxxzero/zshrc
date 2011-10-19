@@ -16,45 +16,39 @@ for c in red green yellow white black cyan magenta blue; do
     eval ${c}__='$fg_bold[${(L)c}]'
 done
 
-local bar="${__white} "
+local prmpt_color=""
 
 # Are we root ?
 if [ "`id -u`" -eq 0 ];
 then
-    bar="${__red} "
+    prmpt_color="${__red} "
 else
-    case $HOST in
-    arkw)
-        bar="${__blue}"
-        ;;
-    archleeenux)
-        bar="${__cyan}"
-        ;;
-    ark)
-        bar="${__green}"
-        ;;
-    fanny|julia|cecile)
-        bar="${__yellow}"
-        ;;
-    esac
+    local host_sum=$(echo $HOST | sha1sum -)
+    host_sum="0x$host_sum[0,1]"
+    host_sum=$(( host_sum % 12 + 1))
+    if (( host_sum > 6 )); then
+        host_sum=$(( host_sum - 6))
+        prmpt_color="%B"
+    fi
+    prmpt_color="${prmpt_color}%F{$host_sum}"
 fi
 
-bar="%(?,${bar},${__yellow})"
+prmpt_color="%(?,${prmpt_color},${__yellow})"
 
-local top="${bar}"
-local bottom="${bar}"
+local top="${prmpt_color}"
+local bottom="${prmpt_color}"
 local time="%*"
-local user="${__blue}%n"
+local user="${prmpt_color}%n"
 local at="${__white}@"
-local host="${__blue}%m"
-local term="${bar}/${__blue}$TERM"
+local host="${prmpt_color}%m"
+local term="${prmpt_color}/${__blue}$TERM"
 local colon="${_magenta}:"
 local dollar="${__white}%#"
 local ret="${__white}|${_magenta}%?${__white}|"
 local stat="%(?,${__blue}^_^ ,${__yellow}-_-')"
-local num="${__white}(${bar}%h${__white})"
+local num="${__white}(${prmpt_color}%h${__white})"
 
-local dir="${bar}%~"
+local dir="${prmpt_color}%~"
 local vcinfo='$(prompt_vc_info)'
 
 bottom="${bottom}${dollar}"
@@ -64,17 +58,15 @@ if [ $SHLVL -gt 1 ];
 then
     for i in {2..$SHLVL}
     do
-    bottom="%{%F{$i}%}(${bottom}%{%F{$i}%})"
+      bottom="%{%F{$i}%}(${bottom}%{%F{$i}%})"
     done
 fi
 
 local prmpt="${top}${dir}${__white}/"
 local bprmpt="${bottom}${___} "
 local frprmpt="$(prompt_vc_info) "
-
 local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
-
-local rprmpt="${bar}${user}${at}${host} ${time}${___}"
+local rprmpt="${prmpt_color}${user}${at}${host} ${prmpt_color}${time}${___}"
 
 export PS1="
 $prmpt
@@ -99,7 +91,6 @@ padd_prompt() {
 ${${(%)prmpt}//\//${__white}/${__red}}$padding$frprmpt
 $bprmpt"
   fi
-
 }
 add-zsh-hook precmd padd_prompt
 
