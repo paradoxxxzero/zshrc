@@ -54,7 +54,7 @@ local at="${__white}@"
 local host="${prmpt_color}%m"
 local term="${prmpt_color}/${__blue}$TERM"
 local colon="${_magenta}:"
-local dollar="${__white}%#"
+local dollar="${prmpt_color}%#"
 local ret="${__white}|${_magenta}%?${__white}|"
 local stat="%(?,${__blue}^_^ ,${__yellow}-_-')"
 local num="${__white}(${prmpt_color}%h${__white})"
@@ -99,7 +99,7 @@ padd_prompt() {
     local padding
     eval "padding=\${(l:${padding_size}:: :)_empty_zz}"
     PS1="
-${${(%)prmpt}//\//${__white}/${prmpt_color}}$padding$frprmpt
+${${(%)prmpt}//\//${__white}/${__red}}$padding$frprmpt
 $bprmpt"
   fi
 }
