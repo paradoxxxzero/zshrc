@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+autoload -U add-zsh-hook
 autoload -U colors
 autoload -U compinit
 

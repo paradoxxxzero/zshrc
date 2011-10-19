@@ -16,12 +16,12 @@ for c in red green yellow white black cyan magenta blue; do
     eval ${c}__='$fg_bold[${(L)c}]'
 done
 
-local bar="${__white}"
+local bar="${__white} "
 
 # Are we root ?
 if [ "`id -u`" -eq 0 ];
 then
-    bar="${__red}"
+    bar="${__red} "
 else
     case $HOST in
     arkw)
@@ -41,18 +41,9 @@ fi
 
 bar="%(?,${bar},${__yellow})"
 
-local top="${bar}┌─"
-local bottom="${bar}└─"
-# if we are in a subshell add a '-' for each sub level to the bottom
-if [ $SHLVL -gt 1 ];
-then
-    for i in {2..$SHLVL}
-    do
-    bottom="${bottom}─"
-    done
-fi
-local sep="${bar}─"
-local time="${__white}[${bar}%*${__white}]"
+local top="${bar}"
+local bottom="${bar}"
+local time="%*"
 local user="${__blue}%n"
 local at="${__white}@"
 local host="${__blue}%m"
@@ -63,31 +54,54 @@ local ret="${__white}|${_magenta}%?${__white}|"
 local stat="%(?,${__blue}^_^ ,${__yellow}-_-')"
 local num="${__white}(${bar}%h${__white})"
 
-# single quotes are important there :
-local dir='${bar}${${(%):-%~}//\//${__white}/${__red}}'
+local dir="${bar}%~"
 local vcinfo='$(prompt_vc_info)'
 
-function active_virtualenv() {
-    if [ -z "$VIRTUAL_ENV" ]; then
-        return
-    fi
-   echo "${__yellow}{ `basename \"$VIRTUAL_ENV\"` }${sep}"
-}
+bottom="${bottom}${dollar}"
 
-local _env='$(active_virtualenv)'
+# Sub shell level indicator
+if [ $SHLVL -gt 1 ];
+then
+    for i in {2..$SHLVL}
+    do
+    bottom="%{%F{$i}%}(${bottom}%{%F{$i}%})"
+    done
+fi
 
-bottom="${bottom}${_env}≻  "
+local prmpt="${top}${dir}${__white}/"
+local bprmpt="${bottom}${___} "
+local frprmpt="$(prompt_vc_info) "
 
-local prmpt="
-${top}${time}${sep}─${user}${at}${host}${colon}${dir}${__white}/
-${bottom}${dollar}${___} "
 local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
 
-local rprmpt="${bar}≺ ─${__white}${vcinfo}${sep}${ret}${sep}${num}${sep}${___}"
+local rprmpt="${bar}${user}${at}${host} ${time}${___}"
 
-export PS1="${prmpt}"
+export PS1="
+$prmpt
+$bprmpt"
+
 export PS2="${prmpt2}"
 export RPS1="${rprmpt}"
+
+padd_prompt() {
+  local bprmpt=$bprmpt
+  if [ -n "$VIRTUAL_ENV" ]; then
+    bprmpt="${__yellow}`basename \"$VIRTUAL_ENV\"` $bprmpt"
+  fi
+  local prmpt_width=${#${(S%%)prmpt//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+  local frprmpt_width=${#${(S%%)frprmpt//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+  local padding_size=$(( COLUMNS - prmpt_width - frprmpt_width ))
+
+  if (( padding_size > 0 )); then
+    local padding
+    eval "padding=\${(l:${padding_size}:: :)_empty_zz}"
+    PS1="
+${${(%)prmpt}//\//${__white}/${__red}}$padding$frprmpt
+$bprmpt"
+  fi
+
+}
+add-zsh-hook precmd padd_prompt
 
 # xterm title
 case $TERM in
