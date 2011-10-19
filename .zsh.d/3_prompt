@@ -64,7 +64,6 @@ fi
 
 local prmpt="${top}${dir}${__white}/"
 local bprmpt="${bottom}${___} "
-local frprmpt="$(prompt_vc_info) "
 local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
 local rprmpt="${prmpt_color}${user}${at}${host} ${prmpt_color}${time}${___}"
 
@@ -77,6 +76,7 @@ export RPS1="${rprmpt}"
 
 padd_prompt() {
   local bprmpt=$bprmpt
+  local frprmpt="$(prompt_vc_info) "
   if [ -n "$VIRTUAL_ENV" ]; then
     bprmpt="${__yellow}`basename \"$VIRTUAL_ENV\"` $bprmpt"
   fi

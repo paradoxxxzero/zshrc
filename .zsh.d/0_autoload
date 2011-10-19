@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-autoload -U add-zsh-hook
 autoload -U colors
 autoload -U compinit
 
@@ -26,4 +25,5 @@ chpwd_functions+='update_current_vc_vars'
 preexec_functions+='preexec_rehash'
 precmd_functions+='precmd_rehash'
 
+autoload -U add-zsh-hook
 update_current_vc_vars
