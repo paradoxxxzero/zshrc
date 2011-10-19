@@ -17,8 +17,8 @@ for c in red green yellow white black cyan magenta blue; do
 done
 typeset -Ag F256 B256
 for color in {000..255}; do
-    F256[$color]="%{[38;5;${color}m%}"
-    B256[$color]="%{[48;5;${color}m%}"
+    F256[$(( color ))]="%{[38;5;${color}m%}"
+    B256[$(( color ))]="%{[48;5;${color}m%}"
 done
 
 local prmpt_color=""
@@ -28,13 +28,12 @@ if [ "`id -u`" -eq 0 ];
 then
     prmpt_color="${__red} "
 else
+    local host_sum="$(echo $HOST | md5sum -)"
     if [[ -n $COLORTERM ]]; then
-        local host_sum=$(echo $HOST | sha1sum -)
         host_sum="0x$host_sum[0,2]"
         host_sum=$(( host_sum % (255 - 16) + 1))
         prmpt_color="%B$F256[$host_sum]"
     else
-        local host_sum=$(echo $HOST | sha1sum -)
         host_sum="0x$host_sum[0,1]"
         host_sum=$(( host_sum % 12 + 1))
         if (( host_sum > 6 )); then
@@ -100,7 +99,7 @@ padd_prompt() {
     local padding
     eval "padding=\${(l:${padding_size}:: :)_empty_zz}"
     PS1="
-${${(%)prmpt}//\//${__white}/${__red}}$padding$frprmpt
+${${(%)prmpt}//\//${__white}/${prmpt_color}}$padding$frprmpt
 $bprmpt"
   fi
 }
