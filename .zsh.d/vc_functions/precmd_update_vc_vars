@@ -1,6 +1,3 @@
 #!/bin/zsh
 
-if [ -n "$__EXECUTED_VC_COMMAND" ]; then
-    update_current_vc_vars
-    unset __EXECUTED_VC_COMMAND
-fi
+update_current_vc_vars
