@@ -29,7 +29,7 @@ then
     prmpt_color="${__red} "
 else
     local host_sum="$(echo $HOST | md5sum -)"
-    if [[ -n $COLORTERM ]]; then
+    if [[ -e /usr/share/terminfo/$TERM[0,1]/${TERM}-256color ]]; then
         host_sum="0x$host_sum[0,2]"
         host_sum=$(( host_sum % (255 - 16) + 1))
         prmpt_color="%B$F256[$host_sum]"
