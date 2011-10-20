@@ -14,16 +14,11 @@ then
     unfunction preexec
     PS1='$ '
 else
-    case "$0" in
-	*.zshrc*)
-            export ZSHRC_HOME=`dirname $0 || $HOME`
-        ;;
-	*)
-	    export ZSHRC_HOME=$HOME
-        ;;
-    esac
+    if [[ -z $ZDOTDIR ]]; then
+        export ZDOTDIR=$HOME
+    fi
     setopt extendedglob
-    for file in $ZSHRC_HOME/.zsh.d/*(.);
+    for file in $ZDOTDIR/.zsh.d/*(.);
     do
         echo " `basename $file` ... \c"
         local t=$(date +%s%N)

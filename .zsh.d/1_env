@@ -28,7 +28,7 @@ case $HOST in
     ;;
 esac
 export PYMACS_PYTHON=python2
-export PYTHONSTARTUP="$ZSHRC_HOME/.pythonrc.py"
+export PYTHONSTARTUP="$ZDOTDIR/.pythonrc.py"
 
 export LESS='--RAW-CONTROL-CHARS --tabs=8 -r --quiet'
 export LESSOPEN="|  pygmentize %s"
