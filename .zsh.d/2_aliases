@@ -67,3 +67,4 @@ alias y='emacsclient -n'
 alias xx='sudo emacs'
 alias _='workon'
 alias d='cdproject'
+alias azerty=sudo loadkeys fr-dvorak-bepo
