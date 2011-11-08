@@ -28,14 +28,15 @@ bindkey "^[[3;3~" kill-word
 bindkey "^[[3;5~" kill-word
 bindkey " " magic-space
 bindkey "^[r" history-incremental-search-forward
+bindkey "^[[Z" expand-history
 
 case "$TERM" in
     *rxvt*)
-	bindkey "\e[8~" end-of-line
-	bindkey "\e[7~" beginning-of-line
-	;;
+        bindkey "\e[8~" end-of-line
+        bindkey "\e[7~" beginning-of-line
+        ;;
     *freebsd*)
-	bindkey "\e[H" beginning-of-line
-	bindkey "\e[F" end-of-line
-	;;
+        bindkey "\e[H" beginning-of-line
+        bindkey "\e[F" end-of-line
+        ;;
 esac

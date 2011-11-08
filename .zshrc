@@ -20,14 +20,10 @@ else
     setopt extendedglob
     for file in $ZDOTDIR/.zsh.d/*(.);
     do
-        echo " `basename $file` ... \c"
-        local t=$(date +%s%N)
+        echo ".\c"
         source $file
-        echo "[" $(( ($(date +%s%N) - $t) / 1000000)) "ms ]"
     done
-
-    __motd
-
+    echo "\x1b[1K\x1b[A"
     export REPORTTIME=1
     export TIMEFMT="
 ${blue_}Total: ${blue__}%*E)         ${magenta_}User: ${magenta__}%*U)         ${yellow_}Kernel: ${yellow__}%*S)         ${green_}System: ${green__}%P)$____"
