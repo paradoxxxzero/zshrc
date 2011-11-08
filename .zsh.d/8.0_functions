@@ -4,6 +4,15 @@
 # 8 functions #
 ###############
 
+self_update () {
+    cd $HOME/.zerorc
+    gp
+    gsu
+    gsfu
+}
+
+
+
 # Fuzzy find
 f() {
     find . -name "*"$1"*" ${(@)argv[2,$#]}
