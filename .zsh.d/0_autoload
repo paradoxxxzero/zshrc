@@ -3,13 +3,13 @@
 autoload -U colors
 autoload -U compinit
 
-fpath=($ZSHRC_HOME/.zsh.d/zsh-completions $fpath)
+fpath=($ZDOTDIR/.zsh.d/zsh-completions $fpath)
 
-fpath=($ZSHRC_HOME/.zsh.d/vc_functions/ $fpath)
-autoload -U $ZSHRC_HOME/.zsh.d/vc_functions/*(:t)
+fpath=($ZDOTDIR/.zsh.d/vc_functions/ $fpath)
+autoload -U $ZDOTDIR/.zsh.d/vc_functions/*(:t)
 
-fpath=($ZSHRC_HOME/.zsh.d/rehash_hooks/ $fpath)
-autoload -U $ZSHRC_HOME/.zsh.d/rehash_hooks/*(:t)
+fpath=($ZDOTDIR/.zsh.d/rehash_hooks/ $fpath)
+autoload -U $ZDOTDIR/.zsh.d/rehash_hooks/*(:t)
 
 colors
 compinit -u
