@@ -4,6 +4,22 @@
 # 8 functions #
 ###############
 
+self_update () {
+    cd $HOME/.zerorc
+    gp
+    gsu
+    gsfu
+}
+
+self_upgrade () {
+    cd $HOME/.zerorc
+    self_update
+    gk master
+    gsf --recursive git checkout master
+    gsf --recursive git pull origin master
+}
+
+
 # Fuzzy find
 f() {
     find . -name "*"$1"*" ${(@)argv[2,$#]}
