@@ -25,3 +25,6 @@ case $HOST in
     ;;
 esac
 export PYTHONSTARTUP="$ZDOTDIR/.pythonrc.py"
+if [ -x "$HOME/.stderrred.so" ]; then
+    export LD_PRELOAD="$HOME/.stderrred.so"
+fi
