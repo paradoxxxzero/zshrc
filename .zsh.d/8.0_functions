@@ -19,6 +19,18 @@ self_upgrade () {
     gsf --recursive git pull origin master
 }
 
+self_commit () {
+    cd $HOME/.zerorc/emacsrc
+    gc -am "Submodule"
+    gh
+    cd $HOME/.zerorc/zshrc
+    gc -am "Submodule"
+    gh
+    cd $HOME/.zerorc
+    gc -am "Submodule"
+    gh
+}
+
 
 # Fuzzy find
 f() {
