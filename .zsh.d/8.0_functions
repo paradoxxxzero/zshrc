@@ -7,8 +7,8 @@
 self_update () {
     cd $HOME/.zerorc
     gp
-    gsu
-    gsfu
+    gsu --init
+    gsfu --init
 }
 
 self_upgrade () {
