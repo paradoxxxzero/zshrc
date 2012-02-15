@@ -7,7 +7,7 @@
 export PATH=$PATH:/usr/lib/perl5/vendor_perl/bin/
 
 export EDITOR="emacsclient -c"
-export BROWSER=chromium-browser
+export BROWSER=chromium
 export GPGKEY=1193ADBC
 export WORDCHARS="_-"
 if [ -x /usr/bin/virtualenvwrapper.sh ]; then
