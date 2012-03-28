@@ -75,7 +75,8 @@ fi
 
 local prmpt="${top}${dir}${__white}/"
 local bprmpt="${bottom}${___} "
-local prmpt2="${bottom}${__blue}%_ ${__white}>${___} "
+local prmpt2="${bottom}${__blue} %_ ${__white}>${___} "
+local prmpt4="${bottom}${__green} %_ ${__white}>${___} "
 local rprmpt="${prmpt_color}${user}${at}${host} ${prmpt_color}${time}${___}"
 
 export PS1="
@@ -84,6 +85,7 @@ $bprmpt"
 
 export PS2="${prmpt2}"
 export RPS1="${rprmpt}"
+export PS4="${prmpt4}"
 
 padd_prompt() {
   local bprmpt=$bprmpt

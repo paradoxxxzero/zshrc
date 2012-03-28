@@ -4,7 +4,7 @@
 # 1 environnement #
 ###################
 
-export PATH=$PATH:/usr/lib/perl5/vendor_perl/bin/
+export PATH=$PATH:/usr/lib/perl5/vendor_perl/bin:$HOME/.gem/ruby/1.9.1/bin
 
 export EDITOR="emacsclient -c"
 export BROWSER=chromium
@@ -30,4 +30,4 @@ if [ -x "$HOME/.stderrred.so" ]; then
 fi
 
 export HYDRA_FOLDER=/home/zero/kozea/hydra/hydra/
-export HYDRA_TEST_DB_NAME=hydraempty_crud
+export HYDRA_TEST_DB_NAME=hydraempty
