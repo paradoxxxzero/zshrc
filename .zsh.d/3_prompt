@@ -90,18 +90,18 @@ export PS4="${prmpt4}"
 padd_prompt() {
   local bprmpt=$bprmpt
   local frprmpt="$(prompt_vc_info) "
+  local tprmpt="${${(%)prmpt}//\//${__white}/${__red}}"
   if [ -n "$VIRTUAL_ENV" ]; then
     bprmpt="${__yellow}`basename \"$VIRTUAL_ENV\"` $bprmpt"
   fi
-  local prmpt_width=${#${(S%%)prmpt//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+  local tprmpt_width=${#${(S%%)prmpt//(\%([KF1]|)\{*\}|\%[Bbkf])}}
   local frprmpt_width=${#${(S%%)frprmpt//(\%([KF1]|)\{*\}|\%[Bbkf])}}
-  local padding_size=$(( COLUMNS - prmpt_width - frprmpt_width ))
+  local padding_size=$(( COLUMNS - tprmpt_width - frprmpt_width ))
 
   if (( padding_size > 0 )); then
-    local padding
-    eval "padding=\${(l:${padding_size}:: :)_empty_zz}"
+    local padding="[${padding_size}C"
     PS1="
-${${(%)prmpt}//\//${__white}/${__red}}$padding$frprmpt
+$tprmpt$padding$frprmpt
 $bprmpt"
   fi
 }

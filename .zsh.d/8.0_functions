@@ -4,6 +4,10 @@
 # 8 functions #
 ###############
 
+init_venv () {
+    source /usr/bin/virtualenvwrapper.sh
+}
+
 self_update () {
     cd $HOME/.zerorc
     gp

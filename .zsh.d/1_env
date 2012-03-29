@@ -10,14 +10,12 @@ export EDITOR="emacsclient -c"
 export BROWSER=chromium
 export GPGKEY=1193ADBC
 export WORDCHARS="_-"
-if [ -x /usr/bin/virtualenvwrapper.sh ]; then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-    export WORKON_HOME=~/.envs
-    export PROJECT_HOME=~/kozea
-    export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    export PIP_RESPECT_VIRTUALENV=true
-    source /usr/bin/virtualenvwrapper.sh
-fi
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
+export WORKON_HOME=~/.envs
+export PROJECT_HOME=~/kozea
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+
 # Host specific configuration
 case $HOST in
     archw)

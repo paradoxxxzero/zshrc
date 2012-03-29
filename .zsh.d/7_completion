@@ -5,12 +5,11 @@
 ################
 
 expand-or-complete-with-dots() {
-  echo -n "\e[31m......\e[0m"
-  zle expand-or-complete
-  zle redisplay
+    zle -R "Completing..." 
+    zle expand-or-complete-old
 }
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
+zle -A expand-or-complete expand-or-complete-old
+zle -N expand-or-complete expand-or-complete-with-dots
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path .zshcache

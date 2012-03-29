@@ -4,6 +4,11 @@
 ## Thanks to all the people which made their zshrc public
 ## Loading zsh configurations from ~/.zsh.d directory
 
+#setopt prompt_subst
+#PS4='+$(date "+%s:%N") %N:%i> '
+#exec 3>&2 2>/tmp/startlog.$$
+#setopt xtrace
+
 if [[ "$TERM" == "dumb" ]]
 # Dumb terminal like emacs tramp
 then
@@ -28,3 +33,6 @@ else
     export TIMEFMT="
 ${blue_}Total: ${blue__}%*E)         ${magenta_}User: ${magenta__}%*U)         ${yellow_}Kernel: ${yellow__}%*S)         ${green_}System: ${green__}%P)$____"
 fi
+
+#unsetopt xtrace
+#exec 2>&3 3>&-
