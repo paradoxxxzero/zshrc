@@ -69,6 +69,5 @@ alias -g .........='../../../../../../../..'
 
 alias x='emacsclient -c -n'
 alias y='emacsclient -n'
-alias _='workon'
 alias d='cdproject'
 alias azerty='sudo loadkeys fr-dvorak-bepo'

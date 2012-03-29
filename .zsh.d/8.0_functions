@@ -4,8 +4,14 @@
 # 8 functions #
 ###############
 
+_ () {
+    if [[ `type workon` == "workon not found" ]]; then
+        source /usr/bin/virtualenvwrapper.sh
+    fi
+    workon $*
+}
+
 init_venv () {
-    source /usr/bin/virtualenvwrapper.sh
 }
 
 self_update () {
