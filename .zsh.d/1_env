@@ -15,6 +15,7 @@ export WORKON_HOME=~/.envs
 export PROJECT_HOME=~/kozea
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
+export GIT_MERGE_AUTOEDIT=no
 
 # Host specific configuration
 case $HOST in
