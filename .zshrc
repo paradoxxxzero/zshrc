@@ -23,7 +23,7 @@ else
         export ZDOTDIR=$HOME
     fi
     setopt extendedglob
-    for file in $ZDOTDIR/.zsh.d/*(.);
+    for file in $ZDOTDIR/.zsh.d/*.zsh(.);
     do
         echo ".\c"
         source $file

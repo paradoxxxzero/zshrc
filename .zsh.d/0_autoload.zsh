@@ -18,12 +18,12 @@ compinit -u
 typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
-preexec_functions+='preexec_update_vc_vars'
-precmd_functions+='precmd_update_vc_vars'
-chpwd_functions+='update_current_vc_vars'
+preexec_functions+='preexec_update_vc_vars.zsh'
+precmd_functions+='precmd_update_vc_vars.zsh'
+chpwd_functions+='update_current_vc_vars.zsh'
 
-preexec_functions+='preexec_rehash'
-precmd_functions+='precmd_rehash'
+preexec_functions+='preexec_rehash.zsh'
+precmd_functions+='precmd_rehash.zsh'
 
 autoload -U add-zsh-hook
-update_current_vc_vars
+update_current_vc_vars.zsh

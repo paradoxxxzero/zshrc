@@ -60,7 +60,7 @@ local stat="%(?,${__blue}^_^ ,${__yellow}-_-')"
 local num="${__white}(${prmpt_color}%h${__white})"
 
 local dir="${prmpt_color}%~"
-local vcinfo='$(prompt_vc_info)'
+local vcinfo='$(prompt_vc_info.zsh)'
 
 bottom="${bottom}${dollar}"
 
@@ -89,7 +89,7 @@ export PS4="${prmpt4}"
 
 padd_prompt() {
   local bprmpt=$bprmpt
-  local frprmpt="$(prompt_vc_info) "
+  local frprmpt="$(prompt_vc_info.zsh) "
   local tprmpt="${${(%)prmpt}//\//${__white}/${__red}}"
   if [ -n "$VIRTUAL_ENV" ]; then
     bprmpt="${__yellow}`basename \"$VIRTUAL_ENV\"` $bprmpt"

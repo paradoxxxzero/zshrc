@@ -28,5 +28,6 @@ if [ -x "$HOME/.stderrred.so" ]; then
     export LD_PRELOAD="$HOME/.stderrred.so"
 fi
 
+export PYTHONPATH=$PYTHONPATH:/home/zero/_/_
 export HYDRA_FOLDER=/home/zero/kozea/hydra/hydra/
-export HYDRA_TEST_DB_NAME=hydraempty
+export HYDRA_TEST_DB_NAME=hydraempty_testing
