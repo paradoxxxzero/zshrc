@@ -31,3 +31,4 @@ fi
 export PYTHONPATH=$PYTHONPATH:/home/zero/_/_
 export HYDRA_FOLDER=/home/zero/kozea/hydra/hydra/
 export HYDRA_TEST_DB_NAME=hydraempty_testing
+export STDERRED_ESC_CODE=`echo -e "\e[1;38;5;204m"`
