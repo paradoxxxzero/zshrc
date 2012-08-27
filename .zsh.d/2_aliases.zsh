@@ -50,6 +50,7 @@ alias gsfu='git submodule foreach --recursive git submodule update'
 alias gt='git status -sb'
 
 alias resource='source ~/.zshrc'
+alias pacaur='BUILDDIR="/src/aur/" pacaur'
 
 alias §='sudo'
 alias §§='sudo -s'

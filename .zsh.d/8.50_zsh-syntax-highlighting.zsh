@@ -6,7 +6,7 @@
 
 source $ZDOTDIR/.zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 ZSH_HIGHLIGHT_STYLES[default]='fg=white,bold'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
@@ -29,7 +29,6 @@ ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[assign]='fg=magenta,bold'
 
 ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
-ZSH_HIGHLIGHT_STYLES[root]='underline'
 
 ZSH_HIGHLIGHT_TOKENS_FOLLOWED_BY_COMMANDS+=('sudo')
 
