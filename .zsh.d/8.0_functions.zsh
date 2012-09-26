@@ -27,6 +27,8 @@ self_upgrade () {
     gk master
     gsf --recursive git checkout master
     gsf --recursive git pull origin master
+    emacs_recompile
+    zsh_recompile
 }
 
 self_commit () {
@@ -39,6 +41,11 @@ self_commit () {
     cd $HOME/.zerorc
     gc -am "Submodule"
     gh
+}
+
+emacs_recompile () {
+    rm -f ~/.zerorc/emacsrc/.emacs.d/elisp/**/*.elc
+    emacs -batch -f batch-byte-compile ~/.zerorc/emacsrc/.emacs.d/elisp/**/*.el
 }
 
 zsh_recompile () {
