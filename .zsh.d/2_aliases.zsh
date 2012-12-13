@@ -52,6 +52,7 @@ alias gt='git status -sb'
 alias resource='source ~/.zshrc'
 alias pacaur='BUILDDIR="/src/aur/" pacaur'
 
+alias sudo='sudo '
 alias §='sudo'
 alias §§='sudo -s'
 alias ç='sudo'
