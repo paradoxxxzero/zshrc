@@ -4,7 +4,7 @@
 # 1 environnement #
 ###################
 
-export PATH=/usr/share/perl5/site_perl/auto/share/dist/Cope:$PATH:/usr/lib/perl5/vendor_perl/bin:$HOME/.gem/ruby/1.9.1/bin
+export PATH=/usr/share/perl5/site_perl/auto/share/dist/Cope:$PATH:/usr/bin/vendor_perl:/usr/bin/site_perl:$HOME/.gem/ruby/1.9.1/bin
 
 export EDITOR="emacsclient -c"
 export BROWSER=chromium
