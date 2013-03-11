@@ -11,7 +11,24 @@ _ () {
     workon $*
 }
 
-init_venv () {
+x () {
+    args=$*
+    parts=(${(s/:/)args})
+    lno=""
+    col=""
+    [[ -n $parts[2] ]] && lno="+$parts[2]"
+    [[ -n $parts[3] ]] && col=":$parts[3]"
+    emacsclient -c -n $lno$col $parts[1]
+}
+
+y () {
+    args=$*
+    parts=(${(s/:/)args})
+    lno=""
+    col=""
+    [[ -n $parts[2] ]] && lno="+$parts[2]"
+    [[ -n $parts[3] ]] && col=":$parts[3]"
+    emacsclient -n $lno$col $parts[1]
 }
 
 self_update () {
