@@ -107,10 +107,13 @@ $bprmpt"
 }
 add-zsh-hook precmd padd_prompt
 
+local alt_title=""
+[[ -n $_alt_title ]] && alt_title+=" -- $_alt_title"
+
 # xterm title
 case $TERM in
     xterm*)
-        precmd () {print -Pn "\e]0;%~\a"}
-        preexec () { print -Pn "\e]0;$1\a" }
+        precmd () {print -Pn "\e]0;%~$alt_title\a"}
+        preexec () { print -Pn "\e]0;$1$alt_title\a" }
         ;;
 esac

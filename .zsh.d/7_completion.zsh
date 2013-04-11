@@ -15,6 +15,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path .zshcache
 zstyle ':completion:*' remove-all-dups yes
 zstyle ':completion:*' verbose yes
+zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 zstyle ':completion:*:functions' ignored-patterns '_*'

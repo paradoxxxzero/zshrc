@@ -31,6 +31,11 @@ y () {
     emacsclient -n $lno$col $parts[1]
 }
 
+mcd () {
+    mkdir -p $*
+    cd $*
+}
+
 self_update () {
     cd $HOME/.zerorc
     gp
