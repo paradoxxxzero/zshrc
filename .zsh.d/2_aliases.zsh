@@ -11,7 +11,7 @@ alias cp='cp --interactive'
 alias mv='mv --interactive'
 alias rm='rm --interactive'
 
-alias ll='ls -l'
+alias ll='ls -l -I __pycache__'
 alias la='ls -a'
 alias lla='ls -la'
 
